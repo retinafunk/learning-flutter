@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_colors/material_colors.dart';
-
+import 'package:faker/faker.dart';
 import 'reflections.dart';
 
 List<Reflection> allReflections = [
@@ -82,10 +82,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  List<Reflection> reflections = [...allReflections];
+  int _index = allReflections.length;
+
   void listAllReflections() {
     print('listAllReflections()!');
-    var all = allReflections;
-    for (Reflection reflection in all) {
+    for (Reflection reflection in this.reflections) {
       print('${reflection.id} : ${reflection.label} : ${reflection.type}');
     }
   }
@@ -94,14 +97,14 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Widget> list = [];
     return new ListView(
       padding: const EdgeInsets.all(8),
-      children: allReflections.map((reflection) => Container(
-        height: 50,
+      children: this.reflections.map((reflection) => Container(
+        height: 40,
         color: reflection.bgColor,
         padding: const EdgeInsets.all(4),
         child: Text(
           '${reflection.id} : ${reflection.label} : ${reflection.type}',
           style: TextStyle(
-            color: MaterialColors.black,
+            color: MaterialColors.white,
             fontSize: 20,
           ),
         )
