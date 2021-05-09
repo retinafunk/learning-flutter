@@ -3,13 +3,37 @@ import 'package:material_colors/material_colors.dart';
 
 import 'reflections.dart';
 
-List<Reflection> allReflections =[
-  Reflection(id: 0,label : 'Happiness', type: 'rangeSlider',bgColor: MaterialColors.aliceBlue),
-  Reflection(id: 1,label : 'Calmness', type: 'rangeSlider',bgColor: MaterialColors.darkSeaGreen),
-  Reflection(id: 2,label : 'Creativity', type: 'rangeSlider',bgColor: MaterialColors.coral),
-  Reflection(id: 3,label : 'Pain', type: 'rangeSlider',bgColor: MaterialColors.darkRed),
-  Reflection(id: 4,label : 'Pain', type: 'rangeSlider',bgColor: MaterialColors.darkRed),
-  Reflection(id: 5,label : 'Pain', type: 'rangeSlider',bgColor: MaterialColors.darkRed),
+List<Reflection> allReflections = [
+  Reflection(
+      id: 0,
+      label: 'Happiness!',
+      type: 'rangeSlider',
+      bgColor: MaterialColors.blueViolet),
+  Reflection(
+      id: 1,
+      label: 'Calmness!',
+      type: 'rangeSlider',
+      bgColor: MaterialColors.blueViolet),
+  Reflection(
+      id: 2,
+      label: 'Creativity1',
+      type: 'rangeSlider',
+      bgColor: MaterialColors.coral),
+  Reflection(
+      id: 3,
+      label: 'Pain',
+      type: 'rangeSlider',
+      bgColor: MaterialColors.darkRed),
+  Reflection(
+      id: 4,
+      label: 'Pain',
+      type: 'rangeSlider',
+      bgColor: MaterialColors.greenYellow),
+  Reflection(
+      id: 5,
+      label: 'Pain',
+      type: 'rangeSlider',
+      bgColor: MaterialColors.darkViolet),
 ];
 
 void main() {
@@ -58,26 +82,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
-  void listAllReflections(){
+  void listAllReflections() {
     print('listAllReflections()!');
     var all = allReflections;
     for (Reflection reflection in all) {
-      print('${reflection.id} Reflection: ${reflection.label} : ${reflection.type}');
+      print(
+          '${reflection.id} : ${reflection.label} : ${reflection.type}');
     }
   }
 
-  Widget listAllReflectionsAsWidgets(){
+  Widget listAllReflectionsAsWidgets() {
     List<Widget> list = [];
     for (Reflection reflection in allReflections) {
-      list.add(Text('${reflection.id} Reflection: ${reflection.label} : ${reflection.type}'));
+      list.add(Text(
+          '${reflection.id} : ${reflection.label} : ${reflection.type}',
+          style: TextStyle(
+            color: reflection.bgColor,
+            fontSize: 20,
+          ),
+      ));
     }
     return Column(
       children: list,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
     );
   }
-
 
   void _listAll() {
     this.listAllReflections();
