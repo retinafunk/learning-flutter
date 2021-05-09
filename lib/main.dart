@@ -82,7 +82,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final faker = Faker();
 
   List<Reflection> reflections = [...allReflections];
@@ -99,18 +98,20 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Widget> list = [];
     return new ListView(
       padding: const EdgeInsets.all(8),
-      children: this.reflections.map((reflection) => Container(
-        height: 40,
-        color: reflection.bgColor,
-        padding: const EdgeInsets.all(4),
-        child: Text(
-          '${reflection.id} : ${reflection.label} : ${reflection.type}',
-          style: TextStyle(
-            color: MaterialColors.white,
-            fontSize: 20,
-          ),
-        )
-      )).toList(),
+      children: this
+          .reflections
+          .map((reflection) => Container(
+              height: 40,
+              color: reflection.bgColor,
+              padding: const EdgeInsets.all(4),
+              child: Text(
+                '${reflection.id} : ${reflection.label} : ${reflection.type}',
+                style: TextStyle(
+                  color: MaterialColors.white,
+                  fontSize: 20,
+                ),
+              )))
+          .toList(),
     );
   }
 
@@ -119,10 +120,11 @@ class _MyHomePageState extends State<MyHomePage> {
     //setState(() { });
   }
 
-  void _addReflection(){
-    Reflection newReflection = Reflection(id:_index++,label: faker.lorem.word());
+  void _addReflection() {
+    Reflection newReflection =
+        Reflection(id: _index++, label: faker.lorem.word(),bgColor: (_index % 2 == 0) ? MaterialColors.cadetBlue : MaterialColors.orange);
     setState(() {
-      this.reflections = [...this.reflections,newReflection];
+      this.reflections = [...this.reflections, newReflection];
     });
   }
 
