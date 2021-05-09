@@ -8,12 +8,12 @@ List<Reflection> allReflections = [
       id: 0,
       label: 'Happiness!',
       type: 'rangeSlider',
-      bgColor: MaterialColors.blueViolet),
+      bgColor: MaterialColors.indianRed),
   Reflection(
       id: 1,
       label: 'Calmness!',
       type: 'rangeSlider',
-      bgColor: MaterialColors.blueViolet),
+      bgColor: MaterialColors.yellowGreen),
   Reflection(
       id: 2,
       label: 'Creativity1',
@@ -92,18 +92,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget listAllReflectionsAsWidgets() {
     List<Widget> list = [];
-    return new Column(
-      children: allReflections
-          .map((reflection) => Text(
-                '${reflection.id} : ${reflection.label} : ${reflection.type}',
-                style: TextStyle(
-                  color: reflection.bgColor,
-                  fontSize: 20,
-                ),
-              ))
-          .toList(),
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return new ListView(
+      padding: const EdgeInsets.all(8),
+      children: allReflections.map((reflection) => Container(
+        height: 50,
+        color: reflection.bgColor,
+        padding: const EdgeInsets.all(4),
+        child: Text(
+          '${reflection.id} : ${reflection.label} : ${reflection.type}',
+          style: TextStyle(
+            color: MaterialColors.black,
+            fontSize: 20,
+          ),
+        )
+      )).toList(),
     );
   }
 
@@ -129,25 +131,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            listAllReflectionsAsWidgets(),
-          ],
+        child: Container(
+          child: listAllReflectionsAsWidgets(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
