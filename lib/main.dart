@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
           .map((reflection) => Container(
               height: 40,
               color: reflection.bgColor,
-              padding: const EdgeInsets.all(4),
+              padding: const EdgeInsets.all(8),
               child: Text(
                 '${reflection.id} : ${reflection.label} : ${reflection.type}',
                 style: TextStyle(
