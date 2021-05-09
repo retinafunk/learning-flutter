@@ -86,24 +86,22 @@ class _MyHomePageState extends State<MyHomePage> {
     print('listAllReflections()!');
     var all = allReflections;
     for (Reflection reflection in all) {
-      print(
-          '${reflection.id} : ${reflection.label} : ${reflection.type}');
+      print('${reflection.id} : ${reflection.label} : ${reflection.type}');
     }
   }
 
   Widget listAllReflectionsAsWidgets() {
     List<Widget> list = [];
-    for (Reflection reflection in allReflections) {
-      list.add(Text(
-          '${reflection.id} : ${reflection.label} : ${reflection.type}',
-          style: TextStyle(
-            color: reflection.bgColor,
-            fontSize: 20,
-          ),
-      ));
-    }
-    return Column(
-      children: list,
+    return new Column(
+      children: allReflections
+          .map((reflection) => Text(
+                '${reflection.id} : ${reflection.label} : ${reflection.type}',
+                style: TextStyle(
+                  color: reflection.bgColor,
+                  fontSize: 20,
+                ),
+              ))
+          .toList(),
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
     );
