@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:material_colors/material_colors.dart';
 
+import 'reflections.dart';
+
+List<Reflection> allReflections =[
+  Reflection(id: 0,label : 'Happiness', type: 'rangeSlider',bgColor: MaterialColors.aliceBlue),
+  Reflection(id: 1,label : 'Calmness', type: 'rangeSlider',bgColor: MaterialColors.darkSeaGreen),
+  Reflection(id: 2,label : 'Creativity', type: 'rangeSlider',bgColor: MaterialColors.coral),
+  Reflection(id: 3,label : 'Pain', type: 'rangeSlider',bgColor: MaterialColors.darkRed),
+  Reflection(id: 4,label : 'Pain', type: 'rangeSlider',bgColor: MaterialColors.darkRed),
+  Reflection(id: 5,label : 'Pain', type: 'rangeSlider',bgColor: MaterialColors.darkRed),
+];
+
 void main() {
   runApp(MyApp());
 }
