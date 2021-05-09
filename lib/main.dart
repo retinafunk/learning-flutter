@@ -114,6 +114,13 @@ class _MyHomePageState extends State<MyHomePage> {
     //setState(() { });
   }
 
+  void _addReflection(){
+    Reflection newReflection = Reflection(id:_index++,label: 'NEW');
+    setState(() {
+      this.reflections = [...this.reflections,newReflection];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -136,9 +143,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _listAll,
-        tooltip: 'List all reflections',
-        child: Icon(Icons.ac_unit_sharp),
+        onPressed: _addReflection,
+        tooltip: 'Add new ',
+        child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
