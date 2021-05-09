@@ -83,6 +83,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  final faker = Faker();
+
   List<Reflection> reflections = [...allReflections];
   int _index = allReflections.length;
 
@@ -118,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _addReflection(){
-    Reflection newReflection = Reflection(id:_index++,label: 'NEW');
+    Reflection newReflection = Reflection(id:_index++,label: faker.lorem.word());
     setState(() {
       this.reflections = [...this.reflections,newReflection];
     });
