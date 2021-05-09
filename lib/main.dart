@@ -58,36 +58,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  int _colorIndex = 0;
-  var _colors =[
-    MaterialColors.blue,
-    MaterialColors.red,
-    MaterialColors.forestGreen,
-    MaterialColors.forestGreen,
-    MaterialColors.forestGreen,
-  ];
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter+=3;
-    });
+
+  void listAllReflections(){
+    print('listAllReflections()!');
+    var all = allReflections;
+    for (Reflection reflection in all) {
+      print('${reflection.id} Reflection: ${reflection.label} : ${reflection.type}');
+    }
   }
 
-  void _pressMe() {
-    setState(() {
-      if(_colorIndex<3){
-        _colorIndex++;
-      } else{
-        _colorIndex = 0;
-      }
+  Widget listAllReflectionsAsWidgets(){
+    List<Widget> list = [];
+    for (Reflection reflection in allReflections) {
+      list.add(Text('${reflection.id} Reflection: ${reflection.label} : ${reflection.type}'));
+    }
+    return Column(
+      children: list,
+    );
+  }
 
-    });
+
+  void _listAll() {
+    this.listAllReflections();
+    //setState(() { });
   }
 
   @override
@@ -122,39 +116,16 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text(
-                'RETINAFUNK',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 48,
-                  color: Colors.blueAccent,
-                ),
-            ),
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            MaterialButton(
-                child: Icon(Icons.access_alarm),
-                color: _colors[_colorIndex],
-                focusColor: Colors.blue,
-                textColor: Colors.white,
-                height: 80,
-                onPressed: _pressMe,
-            )
+            listAllReflectionsAsWidgets(),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        onPressed: _listAll,
+        tooltip: 'List all reflections',
+        child: Icon(Icons.ac_unit_sharp),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
